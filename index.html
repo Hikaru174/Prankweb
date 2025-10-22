@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fun Button</title>
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--accent:#ff6b6b}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(135deg,#071126 0%, #112240 100%);color:#e6eef8}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{background:rgba(255,255,255,0.03);border-radius:12px;padding:22px;box-shadow:0 8px 30px rgba(2,6,23,0.6);max-width:520px;width:100%;text-align:center}
+    img.fun-img{max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;border:4px solid rgba(255,255,255,0.03)}
+    h1{margin:0 0 8px;font-size:20px}
+    p.lead{margin:0 0 18px;opacity:0.9}
+    .btn{display:inline-block;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#ff9b6b);color:white;text-decoration:none;font-weight:600;cursor:pointer;border:none;font-size:16px;transition:transform 0.2s ease}
+    .btn:hover{transform:scale(1.05)}
+    .small{margin-top:12px;font-size:13px;opacity:0.8}
+    footer{margin-top:14px;font-size:12px;opacity:0.7}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <img class="fun-img" src="https://images.unsplash.com/photo-1534126511673-b6899657816a?q=80&w=1200&auto=format&fit=crop" alt="Ayo tekan tombol ini" />
+      <h1>Ayo tekan tombol ini</h1>
+      <p class="lead">Tekan tombol di bawah untuk mendengar sesuatu 😄</p><button id="funBtn" class="btn">Ayo tekan tombol ini</button>
+  <div class="small">(Pastikan volume kamu nyala ya!)</div>
+  <footer>— Hanya untuk hiburan 😄</footer>
+
+  <!-- Suara akan tetap berfungsi di GitHub Pages selama file MP3 ada di folder yang sama -->
+  <audio id="funAudio" preload="auto" src="./tiktokio.com_fl0MPB0CN2kh02UXR4iK.mp3"></audio>
+</div>
+
+  </div>  <script>
+    const btn = document.getElementById('funBtn');
+    const audio = document.getElementById('funAudio');
+
+    btn.addEventListener('click', async () => {
+      try {
+        btn.disabled = true;
+        btn.textContent = 'Sedang memainkan...';
+        await audio.play();
+        setTimeout(() => {
+          btn.textContent = 'Sudah dimainkan';
+        }, 1000);
+      } catch (e) {
+        alert('Tidak bisa memutar suara. Periksa volume atau izin audio.');
+      }
+    });
+  </script></body>
+</html>
